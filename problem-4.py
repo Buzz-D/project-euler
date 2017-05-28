@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*
 # Finde die größte Palindromzahl aus einem Produkt zweier dreistelliger Zahlen
-# Antwort lautet
+# Antwort lautet 906609
 
 import time
 
