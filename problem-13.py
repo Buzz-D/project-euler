@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*
-# Finde die erste Triangle Zahl mit mehr als 500 Teilern
+# Berechne die ersten 10 Ziffern der Summe der 100 Zahlen in der txt Datei
 # Antwort lautet 5537376230
 
 import read_write
