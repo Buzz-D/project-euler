@@ -12,18 +12,17 @@ def read_file(file_to_read):
 
 
 def read_csv_file(file_to_read):
-    content = []
+    content = {}
     with open(file_to_read, 'rb') as csvfile:
-        reader = csv.reader(csvfile, delimiter=' ', quotechar='|')
+        reader = csv.reader(csvfile, delimiter=',', quotechar='|')
         for row in reader:
-            content.append(row)
+            content[int(row[0])] = row[1]
         return content
 
 
 def get_primes():
     with io.open('primes.txt', 'r') as f:
         primes = f.read().split(',')
-        #primes.pop()
         return primes
 
 
