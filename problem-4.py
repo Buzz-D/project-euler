@@ -11,13 +11,10 @@ def main():
         for number2 in range(999, 100, -1):
             product = number1 * number2
             if product > largest_palindrom:
-                #print(product)
-                #print(len(product))
                 product_as_string = str(product)
                 reverse = ''
                 for i in range(len(product_as_string)):
                     reverse += product_as_string[len(product_as_string) - 1 - i]
-                    #print(reverse)
                 if product_as_string == reverse:
                     largest_palindrom = product
     print(largest_palindrom)

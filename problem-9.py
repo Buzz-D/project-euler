@@ -4,7 +4,7 @@
 
 product = 0
 for a in range(1, 333):
-    for b in range(a + 1, (1000 - a) / 2):
+    for b in range(a + 1, int((1000 - a) / 2)):
         c = 1000 - a - b
         if pow(a, 2) + pow(b, 2) == pow(c, 2):
             product = a * b * c

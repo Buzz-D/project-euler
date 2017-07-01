@@ -2,9 +2,18 @@
 # Wie viele Buchstaben kommen vor wenn man alle Zahlen von 1-1000 auflistet (Leerzeichen und Bindestrich zählen
 # nicht. Englische Schreibweise)
 # Antwort lautet 21124
-import read_write
+import csv
 
-words = read_write.read_csv_file('problem-17.csv')
+def read_csv_file(file_to_read):
+    content = {}
+    with open(file_to_read, 'r') as csvfile:
+        reader = csv.reader(csvfile, delimiter=',', quotechar='|')
+        for row in reader:
+            content[int(row[0])] = row[1]
+        return content
+
+
+words = read_csv_file('problem-17.csv')
 character_counter = 0
 for i in range(1, 1001):
     if len(str(i)) == 1:

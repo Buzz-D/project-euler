@@ -4,4 +4,4 @@
 
 import primenumber
 
-print (primenumber.primefactors(600851475143))
+print(max(primenumber.primefactors(600851475143)))

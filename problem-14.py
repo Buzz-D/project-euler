@@ -5,18 +5,18 @@ import time
 
 
 def even(number):
-    return number / 2
+    return int(number / 2)
 
 
 def odd(number):
-    return 3 * number + 1
+    return int(3 * number + 1)
 
 
 def main():
     max_length = 0
     max_number = 0
     nos = {}
-    for number in xrange(2, 1000000):
+    for number in range(2, 1000000):
         lon = [number]
         counter = 1
         if number in nos:
@@ -31,7 +31,7 @@ def main():
             if number in nos:
                 counter += nos[number] - 1
                 break
-        for i in xrange(len(lon)):
+        for i in range(len(lon)):
             nos[lon[i]] = counter - i
         if counter > max_length:
             max_length = counter
