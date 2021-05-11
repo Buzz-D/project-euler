@@ -14,11 +14,13 @@ u = 1
 while True:
     v = (sum_of_triplet / (2 * u)) - u
     if v.is_integer():
-        x = int(u ** 2 - v ** 2)
-        y = int(2 * u * v)
-        z = int(u ** 2 + v ** 2)
+        x = u ** 2 - v ** 2
+        y = 2 * u * v
+        z = u ** 2 + v ** 2
         if x > 0 and y > 0 and z > 0:
             break
     u += 1
-
-print(x, y, z)
+print(
+    "The product of the triplet is %d with x = %d, y = %d and z = %d"
+    % (x * y * z, x, y, z)
+)
