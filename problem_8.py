@@ -23,15 +23,24 @@
 
 # Find the thirteen adjacent digits in the 1000-digit number that have the greatest product. What is the value of this product?
 
-f = open("challenge_8.txt", "r")
-number = f.read()
-f.close()
-product = 0
+import time
 
-for i in range(0, len(number) - 13):
-    product_temp = 1
-    for j in range(13):
-        product_temp *= int(number[i + j])
-    if product_temp > product:
-        product = product_temp
-print(product)
+
+def main():
+    f = open("problem_8.txt", "r")
+    number = f.read()
+    f.close()
+    product = 0
+
+    for i in range(0, len(number) - 13):
+        product_temp = 1
+        for j in range(13):
+            product_temp *= int(number[i + j])
+        if product_temp > product:
+            product = product_temp
+    print("The greatest product of 13 adjacent number is %d" % product)
+
+
+start_time = time.time()
+main()
+print("The runtime was %.2f seconds" % (time.time() - start_time))

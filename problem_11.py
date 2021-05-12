@@ -22,53 +22,61 @@
 # 01 70 54 71 83 51 54 69 16 92 33 48 61 43 52 01 89 19 67 48
 
 # The product of these numbers is 26 × 63 × 78 × 14 = 1788696.
-
 # What is the greatest product of four adjacent numbers in the same direction (up, down, left, right, or diagonally) in the 20×20 grid?
 
-f = open("problem_11.txt", "r")
-matrix = [[int(num) for num in line.split(" ")] for line in f]
-f.close()
-matrix_size, product_size = 20, 4
-product = 0
+import time
 
-# Check matrix vertical
-i, j = 0, 0
-for j in range(matrix_size):
+
+def main():
+    f = open("problem_11.txt", "r")
+    matrix = [[int(num) for num in line.split(" ")] for line in f]
+    f.close()
+    matrix_size, product_size = 20, 4
+    product = 0
+
+    # Check matrix vertical
+    i, j = 0, 0
+    for j in range(matrix_size):
+        for i in range(matrix_size - (product_size - 1)):
+            product_temp = 1
+            for n in range(product_size):
+                product_temp *= matrix[i + n][j]
+            if product_temp > product:
+                product = product_temp
+
+    # Check matrix horizontal
+    i, j = 0, 0
+    for i in range(matrix_size):
+        for j in range(matrix_size - (product_size - 1)):
+            product_temp = 1
+            for n in range(product_size):
+                product_temp *= matrix[i][j + n]
+            if product_temp > product:
+                product = product_temp
+
+    # Check matrix diagonal (top/left -> bottom/right)
+    i, j = 0, 0
     for i in range(matrix_size - (product_size - 1)):
-        product_temp = 1
-        for n in range(product_size):
-            product_temp *= matrix[i + n][j]
-        if product_temp > product:
-            product = product_temp
+        for j in range(matrix_size - (product_size - 1)):
+            product_temp = 1
+            for n in range(product_size):
+                product_temp *= matrix[i + n][j + n]
+            if product_temp > product:
+                product = product_temp
 
-# Check matrix horizontal
-i, j = 0, 0
-for i in range(matrix_size):
-    for j in range(matrix_size - (product_size - 1)):
-        product_temp = 1
-        for n in range(product_size):
-            product_temp *= matrix[i][j + n]
-        if product_temp > product:
-            product = product_temp
+    # Check matrix diagonal (top/right -> bottom/left)
+    i, j = 0, 0
+    for i in range(matrix_size - (product_size - 1)):
+        for j in range(matrix_size - 1, (product_size - 1), -1):
+            product_temp = 1
+            for n in range(product_size):
+                product_temp *= matrix[i + n][j - n]
+            if product_temp > product:
+                product = product_temp
 
-# Check matrix diagonal (top/left -> bottom/right)
-i, j = 0, 0
-for i in range(matrix_size - (product_size - 1)):
-    for j in range(matrix_size - (product_size - 1)):
-        product_temp = 1
-        for n in range(product_size):
-            product_temp *= matrix[i + n][j + n]
-        if product_temp > product:
-            product = product_temp
+    print("The maximum product of 4 adjacent numbers is %d" % product)
 
-# Check matrix diagonal (top/right -> bottom/left)
-i, j = 0, 0
-for i in range(matrix_size - (product_size - 1)):
-    for j in range(matrix_size - 1, (product_size - 1), -1):
-        product_temp = 1
-        for n in range(product_size):
-            product_temp *= matrix[i + n][j - n]
-        if product_temp > product:
-            product = product_temp
 
-print(product)
+start_time = time.time()
+main()
+print("The runtime was %.2f seconds" % (time.time() - start_time))
